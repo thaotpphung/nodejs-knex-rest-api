@@ -1,1 +1,1 @@
-web: knex migration:latest && knex seed:run && node index.js
+web: knex migrate:latest && knex seed:run && node index.js
