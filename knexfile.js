@@ -9,7 +9,7 @@ module.exports = {
     password: null,
     database: config.db.name,
   },
-  ssl: { rejectUnauthorized: false },
+  ssl: { require: true, rejectUnauthorized: false },
   migrations: {
     directory: `${__dirname}/db/migrations`,
   },
