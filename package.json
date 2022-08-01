@@ -1,0 +1,34 @@
+{
+  "name": "node-dependency-injection",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --recursive",
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "db:rollback": "knex migrate:rollback",
+    "db:run": "knex migrate:latest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@hapi/joi": "^17.1.1",
+    "awilix": "^4.2.6",
+    "convict": "^6.0.0",
+    "express": "^4.17.1",
+    "inversify": "^5.0.5",
+    "knex": "^0.21.1",
+    "pg": "^8.2.1",
+    "reflect-metadata": "^0.1.13"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "mocha": "^7.1.2",
+    "nodemon": "^2.0.4",
+    "supertest": "^4.0.2"
+  }
+}
