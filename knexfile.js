@@ -6,7 +6,7 @@ module.exports = {
     host: config.db.host,
     user: config.db.user,
     port: config.db.port,
-    password: null,
+    password: config.db.password,
     database: config.db.name,
     ssl: { rejectUnauthorized: false },
   },

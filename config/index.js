@@ -29,8 +29,6 @@ const config = convict({
     port: {
       doc: 'database port',
       format: 'port',
-      // note that this can be overriden depending on what environment you run on
-      // please check out local.json and test.json and production.json
       default: 5432,
       env: 'DB_PORT',
     },
