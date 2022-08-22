@@ -1,8 +1,10 @@
 const awilix = require('awilix');
-const DevController = require('./src/controller/dev');
-const DevService = require('./src/service/dev');
-const DevDao = require('./src/dao/dev');
-const db = require('./db');
+const db = require('./database');
+const logger = require('./src/common/logger');
+
+const UserController = require('./src/features/users/controller');
+const UserService = require('./src/features/users/service');
+const UserDao = require('./src/features/users/dao');
 
 const container = awilix.createContainer({
   injectionMode: awilix.InjectionMode.PROXY,
@@ -10,18 +12,16 @@ const container = awilix.createContainer({
 
 function setup() {
   container.register({
-    devController: awilix.asClass(DevController),
-
-    // services
-
-    devService: awilix.asClass(DevService),
-
-    // DAOs
-    devDao: awilix.asClass(DevDao),
-
-    // inject knexjs object with database connection pooling
-    // support
+    // common
     db: awilix.asValue(db),
+    logger: awilix.asValue(logger),
+
+    // users
+    userController: awilix.asClass(UserController),
+    userService: awilix.asClass(UserService),
+    userDao: awilix.asClass(UserDao),
+
+    // recipes
   });
 }
 

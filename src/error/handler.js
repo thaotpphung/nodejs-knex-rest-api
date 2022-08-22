@@ -1,10 +1,8 @@
-const ApiError = require('./api-error');
+const ApiError = require('.');
+const logger = require('../common/logger');
 
 function apiErrorHandler(err, req, res, next) {
-  // in prod, don't use console.error
-  // because it is not async
-  console.error(err);
-
+  logger.error(`Error ${err}`);
   if (err instanceof ApiError) {
     return res.status(err.code).json(err.message);
   }

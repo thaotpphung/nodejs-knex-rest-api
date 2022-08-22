@@ -1,13 +1,15 @@
 exports.up = function (knex) {
-  return knex.schema.createTable('comment', (table) => {
-    table.string('content').notNullable().unique();
+  return knex.schema.createTable('recipe', (table) => {
+    table.string('id').primary();
+    table.string('name').notNullable();
     table
-      .integer('user_id')
+      .string('user_id')
       .notNullable()
       .references('id')
-      .inTable('developer')
+      .inTable('user')
       .onDelete('CASCADE')
       .index();
+    table.string('description').notNullable();
     table.timestamps(true, true);
   });
 };

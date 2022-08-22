@@ -1,4 +1,4 @@
-const ApiError = require('../error/api-error');
+const ApiError = require('../error');
 
 function validate(schema) {
   return (req, res, next) => {
@@ -8,8 +8,6 @@ function validate(schema) {
       return;
     }
 
-    // replace request body with validated value
-    // because then we have applied defaults
     req.body = value;
     next();
   };

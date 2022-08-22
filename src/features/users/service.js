@@ -1,37 +1,30 @@
 /* eslint-disable class-methods-use-this */
-class DevService {
-  constructor({ devDao }) {
-    this.devDao = devDao;
+class UserService {
+  constructor({ userDao }) {
+    this.userDao = userDao;
   }
 
-  getDev(id) {
-    return this.devDao.getDev(id);
+  getUser(id) {
+    return this.userDao.getUser(id);
   }
 
-  createDev({ email, firstName, middleNames, lastName }) {
-    // John Smith  Alexander Johnson
+  createUser({ email, firstName, middleNames, lastName }) {
     const { fName, mNames, lName } = this.sanitizeNames(
       firstName,
       middleNames,
       lastName
     );
 
-    return this.devDao.createDev(email, fName, mNames, lName);
+    return this.userDao.createUser(email, fName, mNames, lName);
   }
 
   sanitizeNames(firstName, middleNameStr, lastName) {
-    // eslint-disable-next-line prefer-const
     let [sanitizedFirstName, ...mNames] = firstName.trim().split(' ');
     if (middleNameStr) {
       mNames = mNames.concat(middleNameStr.split(' '));
     }
 
     const sanitizedMiddleNames = mNames.filter((n) => n);
-    // console.log('sanitizedMiddleNames', sanitizedMiddleNames);
-
-    // in case we do not have any middlenames
-    // we want to return null and not empty string
-    // for the middle name
     const sanitizedMiddleName = sanitizedMiddleNames.length
       ? sanitizedMiddleNames.join(' ')
       : null;
@@ -45,4 +38,4 @@ class DevService {
   }
 }
 
-module.exports = DevService;
+module.exports = UserService;

@@ -4,7 +4,7 @@ const DevService = require('../../src/service/dev');
 describe('devService', () => {
   describe('sanitizes names', () => {
     const devService = new DevService({});
-    it('should leave a correct separation as it is', () => {
+    it('should leave a correct separation as it is', (done) => {
       const { fName, mNames, lName } = devService.sanitizeNames(
         'John',
         'Alexander',
@@ -13,6 +13,7 @@ describe('devService', () => {
       assert.strictEqual('John', fName);
       assert.strictEqual('Alexander', mNames);
       assert.strictEqual('Smith', lName);
+      done();
     });
 
     it('should trim whitespace', () => {

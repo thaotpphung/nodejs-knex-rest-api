@@ -1,5 +1,13 @@
-const Server = require('./src/server');
-const config = require('./config');
+const app = require('./src/app');
+const config = require('./src/config');
+const logger = require('./src/common/logger');
 
-const server = new Server(config.port);
-server.run(config.port);
+const main = async () => {
+  app.listen(config.port, () => {
+    logger.info(`Server running on port ${config.port}`);
+  });
+};
+
+main().catch((err) => {
+  logger.error(`Error on starting server: ${err}`);
+});

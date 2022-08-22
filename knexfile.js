@@ -1,4 +1,4 @@
-const config = require('./config');
+const config = require('./src/config');
 
 module.exports = {
   client: 'pg',
@@ -8,13 +8,13 @@ module.exports = {
     port: config.db.port,
     password: config.db.password,
     database: config.db.name,
-    ssl: { rejectUnauthorized: false },
+    // config.db.ssl && ssl: { rejectUnauthorized: false },
   },
   migrations: {
-    directory: `${__dirname}/db/migrations`,
+    directory: `${__dirname}/database/migrations`,
   },
   seeds: {
-    directory: `${__dirname}/db/seeds`,
+    directory: `${__dirname}/database/seeds`,
   },
   pool: { min: 0, max: 10 },
 };
